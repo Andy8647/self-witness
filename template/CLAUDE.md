@@ -67,7 +67,30 @@
 
 ## Ground truth 优先
 
-如果 `index/projects.md` 或 `index/ideas.md` 存在,在做重要判断(尤其关于用户"做了什么" / "没做什么")之前,**必须先看它们**,不能只依赖用户口述。
+用户的**真实产出(portfolio / 作品集)**是 narrative 的校准锚。具体形式取决于用户:代码、文章、设计稿、视频、论文、BP、公开账号数据等。
+
+如果 `index/` 下有 `/compile-me` 生成的索引文件(例如 `index/portfolio.md`、`index/ideas.md`),**做重要判断(尤其关于用户"做了什么" / "没做什么")之前,必须先看它们**,不能只依赖口述。
+
+### 配置你的 evidence sources(建议在 onboarding 时定一次)
+
+在本文件下方添加 `## 我的 Evidence Sources` 节,列出扫描路径。例子:
+
+```markdown
+## 我的 Evidence Sources
+
+- `~/Projects/*`          — 代码仓库(排除 foo/,bar/ 是别人的)
+- `~/Writing/drafts/`     — 未发表草稿
+- `~/Writing/published/`  — 已发文章
+- `~/Design/portfolio/`   — 设计稿
+- XHS API(通过 `xhs` CLI) — 社交媒体 ground truth
+- 个人日历(通过 ICS export) — 行为 vs 自述对照
+
+排除:
+- `~/Downloads/`(易变,不代表长期画像)
+- 任何含有凭证 / 客户私密数据的路径
+```
+
+`/compile-me` 默认扫 `~/Projects/*`(开发者友好),可以通过此配置扩展。
 
 ## 红线
 

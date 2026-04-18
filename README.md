@@ -12,10 +12,24 @@
 **不是** AI life coach。**不是** journal app。**不是** PKM / Obsidian 模板。
 
 **是一个**:
-- 用**证据**(真实事件 + 代码 + 数据)支撑的**个人画像档案**
+- 用**真实事件**支撑的**个人画像档案**(不是抽象口号)
 - 用**反附和的镜子**代替温情滤镜,主动**批判和挑战**用户的 narrative
 - 长期追踪**反复出现的决策模式 / 盲点 / 坑**,当它们在新情境重演时**主动指出**
-- 用**代码侧 ground truth**(扫 `~/Projects/` / git history / 实际发布渠道)**校准** narrative vs 现实的漂移
+- 用**你自己的产出 (portfolio)** 校准 narrative vs 现实的漂移 — 不论你的产出是什么形式
+
+"产出 / 作品集"不只是代码:
+
+| 身份 | 你的 evidence sources 可能是 |
+|---|---|
+| 工程师 | git repo / package 发布 / 部署记录 |
+| 写作者 | 草稿 / 发表的文章 / 读者数据 |
+| 设计师 | 设计稿 / 公开 portfolio / 客户作品 |
+| 创作者 | 视频 / 平台数据(B 站 / YouTube / 小红书) |
+| 研究者 | 论文 / 引用数 / 协作网络 |
+| 商人 / 创业者 | BP / 融资记录 / 客户名单 |
+| 每个人 | 公开账号的发帖数据 / 日历 / 邮件 |
+
+`/compile-me` 命令**默认扫代码仓库**(开发者方便),但你可以在自己的 CLAUDE.md 里配置扫描路径,让它工作在任何产出形式上。
 
 核心差异点:**它把"第三方观察者"这个角色做成一个长期、结构化、反附和的系统**,不是"陪你聊天"。
 
@@ -64,13 +78,11 @@ cd ~/Projects/my-self
 
 ---
 
-## Roadmap
+## Status
 
-- [x] v0.1 — 骨架 + 方法论 docs + `/compile-me` 命令
-- [ ] v0.2 — `/onboard-me` 完善 + `/journal` + `/retrospective` 命令
-- [ ] v0.3 — 封装成标准 Claude Code skill(SKILL.md marketplace 级别)
-- [ ] v0.4 — 开放给 3-5 个 dogfood 用户,收反馈
-- [ ] v1.0 — 正式对外 + 考虑 B2P positioning(给心理咨询师 / 教练用的 client tool)
+`v0.1` — scaffold,作者本人 dogfood 中。**外部用户尚未邀请**。
+
+方向 / bug / 功能请求请去 [GitHub Issues](https://github.com/Andy8647/self-witness/issues)。这里不写预先的 roadmap —— 容易变成伪造的"已进展"信号,而且 v0.1 本就不确定产品形态。
 
 ---
 

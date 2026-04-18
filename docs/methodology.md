@@ -94,18 +94,39 @@
 
 ## 原则 6:Narrative 必须被 ground truth 校准
 
-**Principle**: 用户讲的是 narrative。代码、git history、发布数据、账号数据是 ground truth。当两者冲突,**信数据**,并把漂移记录下来。
+**Principle**: 用户讲的是 narrative。**用户实际产出的东西(portfolio / 作品集 / evidence sources)**是 ground truth。当两者冲突,**信 ground truth**,并把漂移记录下来。
+
+**什么是"产出"— 按用户身份不同,形式完全不同**:
+
+| 身份 | 可用的 evidence sources |
+|---|---|
+| 工程师 | 代码库 / git history / 发布的 package / 部署记录 |
+| 写作者 | 草稿 / 发表的文章 / 读者数据 / 约稿记录 |
+| 设计师 | 设计稿 / 公开 portfolio / 客户名单 |
+| 创作者 | 视频 / 音频 / 平台数据(bilibili / YouTube / XHS 等) |
+| 研究者 | 论文 / 引用数 / 协作网络 |
+| 商人 / 创业者 | BP / 财报 / 融资记录 / 客户列表 |
+| **每个人都有** | 公开账号的发帖数据 / 消费记录 / 日历 / 邮件元数据 |
 
 **例子**:
-- 用户说"我不敢 social media marketing"
-- 小红书 API 显示他有 10 帖,其中一篇 27,314 views
-- Ground truth 胜出。narrative 错了,需要修正
+- 用户口述:"我不敢 social media marketing"
+- 小红书 API 显示:有 10 帖,最 viral 一篇 27,314 views
+- Ground truth 胜出。narrative 错了,pattern 需要精修(见 patterns.md 里"逃避 distribution"的形式依赖分析)
 
-**为什么**:
-- 用户对自己的描述有系统偏差(自贬 / 自夸 / 选择性记忆)
+**为什么必须有这一条**:
+- 用户对自己的描述有**系统偏差**(自贬 / 自夸 / 选择性记忆)
 - 没有 ground truth 的自我系统会在 narrative 的回音室里越转越偏
+- 大语言模型会**被 narrative 牵着走** — 即使 narrative 是错的。外部数据是唯一的 anchor
 
-**落地**: `/compile-me` 命令定期扫 `~/Projects/*`、`Vault/Ideas/*`、外部 API(如 XHS),生成 `index/` 下的索引文件。Claude 做重要判断前强制 cross-check。
+**落地**:
+- `/compile-me` 命令扫描**用户配置的 evidence sources**(在 instance 的 CLAUDE.md 里定义),生成 `index/` 下的索引文件
+- 默认 scan 目标是 `~/Projects/*`(对开发者友好),但**所有非代码产出都应该可以加进扫描范围**
+- Claude 做重要判断前强制 cross-check `index/` 的产出
+
+**注意**:`/compile-me` 默认用代码做例子,不是因为代码更重要,是因为:
+1. 工程师用户是早期 dogfood 群体
+2. 代码 + git 的元数据最容易自动扫
+3. 非代码产出(写作 / 设计 / 视频)需要用户提供更多配置信息(路径 / API token / 账号),将在 v0.2+ 逐步支持
 
 ---
 

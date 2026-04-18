@@ -1,33 +1,49 @@
 ---
-description: Compile ~/Projects/ and Vault/Ideas/ into index/ so future sessions have ground-truth context beyond narrative
+description: Compile the user's portfolio (evidence sources) + ideas into index/ so future sessions have ground-truth context beyond narrative
 ---
 
 # /compile-me
 
-索引用户的项目和 ideas,让后续 session 有代码侧的 ground truth,而不是只依赖口述 narrative(narrative 常常会遗漏 / 淡化 / 误标)。
+索引用户的 **portfolio / 作品集 / evidence sources**,让后续 session 有外部 ground truth,而不是只依赖口述 narrative(narrative 常常会遗漏 / 淡化 / 误标)。
 
-## 默认扫描范围
+## "Portfolio"不等于代码
+
+每个用户的 evidence sources 形式不同。默认扫代码仓库(工程师用户多),但**可以并且应该**配置成用户实际产出的形式:
+
+- 工程师:`~/Projects/*` + git history + 发布 package
+- 写作者:`~/Writing/drafts/` + `~/Writing/published/`
+- 设计师:`~/Design/portfolio/` + Figma / Framer export
+- 创作者:XHS / B 站 / YouTube API + 本地素材库
+- 研究者:论文目录 + Zotero / Scholar API
+- 商人:`~/Business/` + 邮件元数据
+
+**用户需要在自己的 instance 的 `CLAUDE.md` 里定义 `## 我的 Evidence Sources` 节**(template CLAUDE.md 里有示范格式)。
+
+## 默认扫描(若用户未配置)
 
 **扫**:
 - `~/Projects/*`(排除**本 self-witness instance 自身** + 任何用户手动标记的 `🔴 排除` 目录)
-- 如果用户有 Obsidian Vault:`<vault>/Ideas/*`(**pointer-only,不复制内容**)
+- 如果用户有 Obsidian Vault 且提及 `Ideas/`:`<vault>/Ideas/*`(**pointer-only,不复制内容**)
 
-**不扫**:
-- `~/Downloads/*`
+**不扫**(永远排除):
+- `~/Downloads/*`(易变,不代表长期画像)
 - 任何 `.env*` / 凭证 / gitignored 内容
 - `.git/` / `node_modules/` / `.venv/` / `dist/`
+- 客户 / 他人私密数据目录
 
 用户可以在本命令运行时临时指定 `include:` 和 `exclude:` 覆盖默认。
 
 ## 执行方式
 
-并行派两个 Explore agent(避免污染主 context):
-- **Agent 1**:扫 `~/Projects/*`,按 schema 生成逐项目摘要 + discovery 观察
-- **Agent 2**:扫 `Vault/Ideas/*`(如果存在),生成 pointer-only 索引
+并行派 Explore agent(避免污染主 context),按用户配置的 evidence sources 数量:
+- **默认(代码)**:1 个 agent 扫 `~/Projects/*`,按 schema 生成逐项目摘要 + discovery 观察
+- **如有 ideation library**(Vault/Ideas 或等价):1 个 agent pointer-only 扫
+- **如有其他 source**(写作 / 设计 / 创作者 API 等):每个 source 1 个 agent
 
-主 Claude 收到两份报告后,写入:
-- `index/projects.md`(master + 所有项目)
-- `index/ideas.md`(Ideas pointer 索引,如有)
+主 Claude 收到报告后,写入:
+- `index/portfolio.md`(master + 所有 evidence items)
+- `index/ideas.md`(ideation pointer 索引,如有)
+- `index/<其他 source>.md`(根据用户配置扩展)
 
 ## 墙状态 (wall status) — 必须诚实
 
@@ -38,16 +54,16 @@ description: Compile ~/Projects/ and Vault/Ideas/ into index/ so future sessions
 
 **重要**:`.git init` 但 0 commits **≠ 穿墙**。要看实际 external reach。
 
-## Project schema(每项目 ≤ 12 行)
+## Evidence item schema(每个 portfolio item ≤ 12 行)
 
 ```
-### <slug>
+### <slug / 作品名>
 
-- **目的 (one line)**
+- **目的 / 主题 (one line)**
 - **墙状态**: emoji + label
-- **Tech stack**
-- **最近活动**: 最后 commit / 文件改动 + commits 数
-- **可见产物**: 部署地址 / npm / PyPI / etc.
+- **媒介 / Tech stack**: 代码语言 / 写作主题 / 设计工具 / 视频平台 / 等等
+- **最近活动**: 最后修改 / 发布日期 + 数量信号(commits / 字数 / 稿数 / views)
+- **外部可见产物**: URL / 发表处 / 平台数据 / 用户反馈
 - **3 个 nugget**: 具体事实,不空话
 ```
 
