@@ -42,4 +42,4 @@ self-witness/
 
 ## Status
 
-v0.1 — 作者 dogfood 中。外部用户尚未邀请。路线图见 README.md。
+v0.1 — 开源早期。作者本人已完整 dogfood 一轮并在常态使用。欢迎贡献。方向决策在 GitHub Issues 讨论,不写预先 roadmap。

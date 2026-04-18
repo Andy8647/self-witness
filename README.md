@@ -3,7 +3,7 @@
 > **A structured self-understanding system, as a Claude Code skill.**
 > 结构化自我理解系统 — 以 Claude Code skill 形式提供。
 
-**Status**: `v0.1` — 作者本人 dogfood 中。**尚未邀请外部用户**。
+**Status**: `v0.1` — 开源、早期、作者本人已完整跑过一轮 onboarding 并在用。欢迎试用、提 Issue、反馈、fork。
 
 ---
 
@@ -80,9 +80,14 @@ cd ~/Projects/my-self
 
 ## Status
 
-`v0.1` — scaffold,作者本人 dogfood 中。**外部用户尚未邀请**。
+`v0.1` — scaffold 阶段。**作者本人已完整跑过一轮 onboarding 并开始常态使用**。产品形态仍在验证。
 
-方向 / bug / 功能请求请去 [GitHub Issues](https://github.com/Andy8647/self-witness/issues)。这里不写预先的 roadmap —— 容易变成伪造的"已进展"信号,而且 v0.1 本就不确定产品形态。
+欢迎任何人:
+- **试用**(clone 或 copy `template/` 到自己目录)
+- **提 Issue**([bug / 不够泛化的地方 / 功能请求 / 困惑的地方](https://github.com/Andy8647/self-witness/issues))
+- **Fork 和改**(MIT,随意)
+
+这里**不预先写 roadmap** —— 容易变成伪造的"已进展"信号。方向决策在 Issues 讨论。
 
 ---
 
