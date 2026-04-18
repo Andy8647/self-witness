@@ -87,8 +87,6 @@ cd ~/Projects/my-self
 - **提 Issue**([bug / 不够泛化的地方 / 功能请求 / 困惑的地方](https://github.com/Andy8647/self-witness/issues))
 - **Fork 和改**(MIT,随意)
 
-这里**不预先写 roadmap** —— 容易变成伪造的"已进展"信号。方向决策在 Issues 讨论。
-
 ---
 
 ## License
