@@ -89,15 +89,6 @@
 
 ---
 
-## Inspiration / 灵感来源
-
-- **[Andrej Karpathy's llm-wiki](https://karpathy.ai/)** — 用 LLM 把原始人类素材 compile 成结构化知识库的做法。`compile` 这个动词的原始 sense 来自这里
-- 作者把这套思路先用到了自己 Obsidian Vault 里做 UNSW 课程知识库(`/wiki`);**self-witness 是把它反过来**:不 compile 外部知识,compile **你自己的 portfolio + narrative + 事实**,再拿结果去校准自己
-
-和 persona-distillation 类 skill(`colleague.skill` / `dot-skill` / `awesome-persona-distill-skills` 等)不同 —— 那边用 "compile / distill" 指"把人压缩成可扮演的 skill",方向**相反**。这里的 `compile` 继承 Karpathy 的原意,是"结构化知识提取",不是"persona 复制"。
-
----
-
 ## Quick start / 快速开始
 
 ```sh
