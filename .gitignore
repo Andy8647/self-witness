@@ -1,0 +1,24 @@
+# macOS
+.DS_Store
+
+# Editor
+.idea/
+.vscode/
+*.swp
+
+# Claude local
+.claude/settings.local.json
+
+# Node (if tooling added later)
+node_modules/
+dist/
+
+# Python (if tooling added later)
+__pycache__/
+*.pyc
+.venv/
+
+# Don't commit someone else's personal data if they fork this
+# (template/ itself is fine — it's blank templates)
+instances/
+my-self/
